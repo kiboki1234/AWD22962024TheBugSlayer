@@ -1,9 +1,11 @@
 // Datos del menú definidos directamente
 const menuItems = [
-    { name: "Sobre Nosotros", href: "#about" },
-    { name: "Eventos", href: "#events" },
+    { name: "Sobre Nosotros", href: "aboutUs.html" },
+    { name: "Eventos", href: "eventos.html" },
+    { name: "Modelos de Debate", href: "modelosDebate.html" },
     { name: "Contactos", href: "contacts.html" },
     { name: "Login", href: "login.html" }
+    
 ];
 
 // Función para renderizar el menú
