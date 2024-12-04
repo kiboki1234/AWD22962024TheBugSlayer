@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="../assets/css/activityStyles.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">CPED</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,78 +27,166 @@
 
   <!-- Page Content -->
   <div class="container my-5">
-    <h1 class="text-center mb-4">Activity Tracking</h1>
+        <h1 class="text-center mb-4">Activity Tracking</h1>
 
-    <div class="row">
-      <!-- Task Submission Form -->
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            Enviar Tarea
-          </div>
-          <div class="card-body">
-            <form id="sendTaskForm">
-              <div class="mb-3">
-                <label for="taskTitle" class="form-label">Título de la Tarea</label>
-                <input type="text" class="form-control" id="taskTitle" placeholder="Escribe el título de la tarea">
-              </div>
-              <div class="mb-3">
-                <label for="taskDescription" class="form-label">Descripción</label>
-                <textarea class="form-control" id="taskDescription" rows="4" placeholder="Detalles de la tarea"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary w-100">Enviar</button>
-            </form>
-          </div>
+        <div class="row">
+            <!-- Sent Tasks -->
+            <div class="col">
+                <!-- Assign Task Section -->
+                <div class="card">
+                        <div class="card-header">Asignar Tarea</div>
+                        <div class="card-body">
+                            <form method="POST" action="assign_task.php">
+                            <div class="mb-3">
+                                <label for="taskTitle" class="form-label">Título de la Tarea</label>
+                                <input type="text" class="form-control" id="taskTitle" name="title" placeholder="Título de la tarea" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="taskDescription" class="form-label">Descripción</label>
+                                <textarea class="form-control" id="taskDescription" name="description" rows="3" placeholder="Detalles de la tarea" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="assignedTo" class="form-label">Asignar a</label>
+                                <select class="form-select" id="assignedTo" name="assigned_to" required>
+                                <option value="" selected disabled>Seleccione un usuario</option>
+                                <?php
+                                // Simulación de usuarios disponibles desde la base de datos
+                                $users = [
+                                    ['id' => 1, 'name' => 'Carlos Ramírez'],
+                                    ['id' => 2, 'name' => 'María López'],
+                                    ['id' => 3, 'name' => 'Ana Torres']
+                                ];
+                                foreach ($users as $user) {
+                                    echo "<option value='{$user['id']}'>{$user['name']}</option>";
+                                }
+                                ?>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Asignar Tarea</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    
+                    <div class="card-header">Tareas Enviadas</div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <th>Tarea</th>
+                            <th>Asignado a</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // Simulación de tareas enviadas desde la base de datos
+                            $sentTasks = [
+                            ['id' => 1, 'title' => 'Preparar material', 'assignedTo' => 'Carlos Ramírez', 'status' => 'Completada'],
+                            ['id' => 2, 'title' => 'Enviar guías', 'assignedTo' => 'María López', 'status' => 'Pendiente']
+                            ];
+                            foreach ($sentTasks as $task) {
+                            echo "
+                                <tr>
+                                <td>{$task['title']}</td>
+                                <td>{$task['assignedTo']}</td>
+                                <td><span class='badge bg-" . ($task['status'] === 'Completada' ? 'success' : 'warning') . "'>{$task['status']}</span></td>
+                                <td>
+                                    " . ($task['status'] === 'Completada' ? "<button class='btn btn-primary btn-sm' data-bs-toggle='modal' data-bs-target='#reviewModal' data-task-id='{$task['id']}'>Revisar</button>" : "") . "
+                                </td>
+                                </tr>";
+                            }
+                            ?>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                <div class="card-header">Tareas Recibidas</div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th>Tarea</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Simulación de tareas recibidas desde la base de datos
+                        $receivedTasks = [
+                        ['id' => 1, 'title' => 'Preparar material', 'status' => 'Pendiente'],
+                        ['id' => 2, 'title' => 'Enviar guías', 'status' => 'En progreso']
+                        ];
+                        foreach ($receivedTasks as $task) {
+                        echo "
+                            <tr>
+                            <td>{$task['title']}</td>
+                            <td>
+                                <form method='POST' action='update_task_status.php'>
+                                <input type='hidden' name='taskId' value='{$task['id']}'>
+                                <select class='form-select form-select-sm' name='status' onchange='this.form.submit()'>
+                                    <option value='Pendiente' " . ($task['status'] === 'Pendiente' ? 'selected' : '') . ">Pendiente</option>
+                                    <option value='En progreso' " . ($task['status'] === 'En progreso' ? 'selected' : '') . ">En progreso</option>
+                                    <option value='Completada' " . ($task['status'] === 'Completada' ? 'selected' : '') . ">Completada</option>
+                                </select>
+                                </form>
+                            </td>
+                            <td>-</td>
+                            </tr>";
+                        }
+                        ?>
+                    </tbody>
+                    </table>
+                </div>
+                </div>
+            </div>
+            
         </div>
-      </div>
+    </div>
 
-      <!-- Received Tasks -->
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            Tareas Recibidas
-          </div>
-          <div class="card-body">
-            <ul class="list-group" id="receivedTasks">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Preparar material para debate
-                <span class="badge bg-primary">Pendiente</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Crear lista de participantes
-                <span class="badge bg-success">Completada</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Enviar guías de trabajo
-                <span class="badge bg-warning">En progreso</span>
-              </li>
-            </ul>
-          </div>
+  <!-- Review Modal -->
+  <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reviewModalLabel">Revisar Tarea</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <form method="POST" action="review_task.php">
+          <div class="modal-body">
+            <input type="hidden" id="modalTaskId" name="taskId">
+            <p id="modalTaskDetails"></p>
+            <div class="mb-3">
+              <label for="taskScore" class="form-label">Puntaje</label>
+              <input type="number" class="form-control" id="taskScore" name="score" min="0" max="100" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    document.getElementById('sendTaskForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const title = document.getElementById('taskTitle').value;
-      const description = document.getElementById('taskDescription').value;
+    // Script para pasar datos al modal
+    const reviewModal = document.getElementById('reviewModal');
+    reviewModal.addEventListener('show.bs.modal', (event) => {
+      const button = event.relatedTarget;
+      const taskId = button.getAttribute('data-task-id');
+      const taskDetails = button.closest('tr').querySelector('td:first-child').textContent;
 
-      if (title && description) {
-        const taskItem = document.createElement('li');
-        taskItem.className = 'list-group-item d-flex justify-content-between align-items-center';
-        taskItem.innerHTML = `${title} <span class="badge bg-primary">Pendiente</span>`;
-        document.getElementById('receivedTasks').appendChild(taskItem);
-
-        alert('Tarea enviada exitosamente');
-        this.reset();
-      } else {
-        alert('Por favor, completa todos los campos');
-      }
+      document.getElementById('modalTaskId').value = taskId;
+      document.getElementById('modalTaskDetails').textContent = `Revisar tarea: ${taskDetails}`;
     });
   </script>
+
 </body>
 </html>
