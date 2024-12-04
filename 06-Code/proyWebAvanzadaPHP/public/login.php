@@ -5,25 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - CPED</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/stylesLogin.css">
+    <link rel="stylesheet" href="../assets/css/stylesLogin.css">
+    <link rel="stylesheet" href="../assets/css/styleWhatsappBtn.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <img class="logo-navbar" src="./img/logonav.png" alt="logo">
-            <a class="navbar-brand" href="./index.html"><strong>CPED</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <!-- Los elementos del menú se generan dinámicamente -->
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
+    <!-- Barra de navegación -->
+    <?php include_once './layouts/navbar.php';?> 
+    
+    <div class="container pt-4">
         <form action="./scriptsphp/login.php" method="POST" class="login-container form-control">
 
             <h1 class="h3 mb-3 fw-normal">Accede a tu cuenta del club CPED</h1>
@@ -54,8 +43,10 @@
           </div>
         </div>
       </div>
-    <script src="./scriptsJs/menu.js"></script>
+      <?php include_once './layouts/bottonWhatsApp.php';?>
+    <script src="../assets/scriptsJs/menu.js"></script>
     <script src="./scriptsJs/login.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

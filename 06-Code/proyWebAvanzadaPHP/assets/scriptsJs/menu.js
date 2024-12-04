@@ -1,10 +1,10 @@
 // Datos del menú definidos directamente
 const menuItems = [
-    { name: "Sobre Nosotros", href: "aboutUs.html" },
-    { name: "Eventos", href: "eventos.html" },
-    { name: "Modelos de Debate", href: "modelosDebate.html" },
-    { name: "Contactos", href: "contacts.html" },
-    { name: "Login", href: "login.html" }
+    { name: "Sobre Nosotros", href: "aboutUs.php" },
+    { name: "Eventos", href: "eventos.php" },
+    { name: "Modelos de Debate", href: "modelosDebate.php" },
+    { name: "Contactos", href: "contacts.php" },
+    { name: "Login", href: "login.php" }
     
 ];
 

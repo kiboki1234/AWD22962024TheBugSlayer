@@ -5,25 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modelos de Debate - CPED</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styleModelos.css">
+    <link rel="stylesheet" href="../assets/css/styleModelos.css">
+    <link rel="stylesheet" href="../assets/css/styleWhatsappBtn.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <img class="logo-navbar" src="./img/logonav.png" alt="logo">
-            <a class="navbar-brand" href="./index.html"><strong>CPED</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <!-- los elemoentos se generan dinamicamente -->
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
+    <!-- Barra de navegación -->
+    <?php include_once './layouts/navbar.php';?> 
+    
+    <div class="container mt-5 pt-4">
         <h1 class="text-center header-title">Modelos de Debate</h1>
         <p class="text-center">Descubre los distintos modelos de debate que practicamos en CPED, diseñados para fomentar el análisis crítico, la oratoria y el trabajo en equipo.</p>
 
@@ -79,7 +68,8 @@
             </div>
         </div>
     </div>
+    <?php include_once './layouts/bottonWhatsApp.php';?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./scriptsJs/menu.js"></script>
+    <script src="../assets/scriptsJs/menu.js"></script>
 </body>
 </html>

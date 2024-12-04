@@ -6,29 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - CPED</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styleWhatsappBtn.css">
 </head>
 
 <body>
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <img class="logo-navbar" src="./img/logonav.png" alt="logo">
-            <a class="navbar-brand" href="#"><strong>CPED</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <!-- Los elementos del menú se generan dinámicamente -->
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include_once './layouts/navbar.php';?> 
 
-    <div class="hero">
-        <div class="container">
+    <div class="hero ">
+        <div class="container pt-4">
             <h1>Bienvenido al Club de Política Exterior y Diplomación</h1>
             <p>Simulamos modelos de debate como la ONU y el Parlamento Británico. ¡Únete a nosotros para desarrollar tus
                 habilidades de oratoria y diplomacia!</p>
@@ -85,12 +72,13 @@
             </div>
         </div>
     </section>
+    <?php include_once './layouts/bottonWhatsApp.php';?>
     <footer>
         <p>&copy; 2024 CPED. Todos los derechos reservados.</p>
     </footer>
 
     <!-- Referencia al archivo de JavaScript -->
-    <script src="./scriptsJs/menu.js"></script>
+    <script src="../assets/scriptsJs/menu.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
