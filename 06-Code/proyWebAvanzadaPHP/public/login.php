@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - CPED</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/stylesLogin.css">
-    <link rel="stylesheet" href="../assets/css/styleWhatsappBtn.css">
+    <link rel="stylesheet" href="./assets/css/stylesLogin.css">
+    <link rel="stylesheet" href="./assets/css/styleWhatsappBtn.css">
 </head>
 <body>
     <!-- Barra de navegación -->
@@ -44,7 +44,7 @@
         </div>
       </div>
       <?php include_once './layouts/bottonWhatsApp.php';?>
-    <script src="../assets/scriptsJs/menu.js"></script>
+    <script src="./assets/scriptsJs/menu.js"></script>
     <script src="./scriptsJs/login.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

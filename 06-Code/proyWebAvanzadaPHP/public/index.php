@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - CPED</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/styleWhatsappBtn.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styleWhatsappBtn.css">
 </head>
 
 <body>
@@ -78,7 +78,7 @@
     </footer>
 
     <!-- Referencia al archivo de JavaScript -->
-    <script src="../assets/scriptsJs/menu.js"></script>
+    <script src="./assets/scriptsJs/menu.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
