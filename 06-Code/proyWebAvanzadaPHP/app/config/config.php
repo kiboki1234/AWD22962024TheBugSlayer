@@ -11,9 +11,10 @@
         $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;";
         $pdo = new PDO($dsn, $user, $password);
     
-        // Configuraciones adicionales de PDO
+
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Modo de errores
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); // Modo de fetch por defecto
+        //echo $pdo;
     } catch (PDOException $e) {
         die("Error al conectar a la base de datos: " . $e->getMessage());
     }

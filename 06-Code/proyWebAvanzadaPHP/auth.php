@@ -1,21 +1,34 @@
 <?php
 // login.php
-session_start();  // Iniciar sesión para almacenar información del usuario
+session_start(); // Iniciar sesión para almacenar información del usuario
+
 
 require_once './app/middleware/authenticationUsers.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $correo = $_POST['username'];
-    $password = $_POST['passwordLogin'];
+    $username = $_POST['username']; // Asegúrate de que este campo coincida con el formulario
+    $password = $_POST['passwordLogin']; // Asegúrate de que este campo coincida con el formulario
 
-    $user = verifyUser($correo, $password, $pdo);
+    // Verificar las credenciales del usuario
+    $user = verifyUser($username, $password, $pdo);
 
     if ($user) {
-        echo "<script>alert('Inicio de sesión exitoso. Bienvenido, {$user['nombre']}');</script>";
-        header('location: ./app/views/activity/index.php');
+        // Almacenar los datos del usuario en la sesión
+        $_SESSION['usuario_id'] = $user['id_usuario'];
+        $_SESSION['usuario_rol'] = $user['id_rol'];
+        $_SESSION['usuario_nombre'] = $user['nombre_miembro'];
+        $_SESSION['usuario_rol_nombre'] = $user['nombre_rol'];
+
+        // Redirección a la página principal del sistema
+        header("Location: ./app/activity/index.php");
+        exit();
     } else {
-        echo "<script>alert('Credenciales inválidas. Por favor, intenta de nuevo.');</script>";
-        header('location: ./index.php');
+        // Mostrar alerta de credenciales inválidas y redirigir al login
+        echo "<script>
+                alert('Credenciales inválidas. Por favor, intenta de nuevo.');
+                window.location.href = './login.php';
+              </script>";
+        exit();
     }
 }
 ?>
