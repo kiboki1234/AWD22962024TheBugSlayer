@@ -72,10 +72,12 @@
             </div>
         </div>
     </section>
-    <?php include_once './layouts/bottonWhatsApp.php';?>
+    <?php include_once './layouts/bottonWhatsApp.php';
+    //phpinfo();?>
     <footer>
         <p>&copy; 2024 CPED. Todos los derechos reservados.</p>
     </footer>
+    
 
     <!-- Referencia al archivo de JavaScript -->
     <script src="./assets/scriptsJs/menu.js"></script>

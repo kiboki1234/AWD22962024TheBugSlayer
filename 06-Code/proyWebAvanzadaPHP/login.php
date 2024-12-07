@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
     <?php include_once './layouts/navbar.php';?> 
     
     <div class="container pt-4">
-        <form action="./scriptsphp/login.php" method="POST" class="login-container form-control">
+        <form action="./auth.php" method="POST" class="login-container form-control">
 
             <h1 class="h3 mb-3 fw-normal">Accede a tu cuenta del club CPED</h1>
             <div class="form-floating mb-3">
@@ -45,7 +46,6 @@
       </div>
       <?php include_once './layouts/bottonWhatsApp.php';?>
     <script src="./assets/scriptsJs/menu.js"></script>
-    <script src="./scriptsJs/login.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
