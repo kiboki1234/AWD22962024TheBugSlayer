@@ -18,10 +18,10 @@
             <!-- Card 1 -->
             <div class="col-md-6">
                 <div class="card">
-                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Evento 1">
+                    <img src="https://res.cloudinary.com/dp8wdwo5h/image/upload/v1733637315/4_c5rwje.png" class="card-img-top" alt="Evento 1">
                     <div class="card-body">
-                        <h5 class="card-title">Modelo ONU - Debate General</h5>
-                        <p class="card-text">Fecha: 12 de diciembre, 2024<br>Lugar: Auditorio Central CPED<br>Descripción: Explora temas globales mientras desarrollas habilidades de oratoria y negociación.</p>
+                        <h5 class="card-title">SICMUN</h5>
+                        <p class="card-text">Fecha: 20 de diciembre, 2024<br>Lugar: Auditorio Universidad<br>Descripción: Explora temas globales mientras desarrollas habilidades de oratoria y negociación.</p>
                         <a href="#" class="btn btn-primary w-100">Más Información</a>
                     </div>
                 </div>
@@ -29,10 +29,10 @@
             <!-- Card 2 -->
             <div class="col-md-6">
                 <div class="card">
-                    <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Evento 2">
+                    <img src="https://res.cloudinary.com/dp8wdwo5h/image/upload/v1733637672/SICMUN_wuxwut.png" class="card-img-top" alt="Evento 2">
                     <div class="card-body">
-                        <h5 class="card-title">Parlamento Británico - Debate Extemporáneo</h5>
-                        <p class="card-text">Fecha: 19 de enero, 2025<br>Lugar: Salón de Conferencias CPED<br>Descripción: Participa en debates rápidos y argumenta con persuasión sobre temas asignados.</p>
+                        <h5 class="card-title">BUSSINES MUN</h5>
+                        <p class="card-text">Fecha: 19 de enero, 2025<br>Lugar: Salón de Conferencias<br>Descripción: Participa en debates rápidos y argumenta con persuasión sobre temas asignados.</p>
                         <a href="#" class="btn btn-primary w-100">Más Información</a>
                     </div>
                 </div>

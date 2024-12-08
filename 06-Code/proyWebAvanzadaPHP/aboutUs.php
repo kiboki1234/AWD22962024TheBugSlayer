@@ -14,7 +14,7 @@
     
     <div class="container about-section pt-4">
         <h1 class="text-center header-title">Sobre Nosotros</h1>
-        <p class="text-center">El **Club de Política Exterior y Diplomación (CPED)** se dedica a promover el aprendizaje y la práctica de habilidades diplomáticas, de debate y negociación a través de simulaciones como Modelos de Naciones Unidas y el Parlamento Británico.</p>
+        <p class="text-center">El <strong>Club de Política Exterior y Diplomación (CPED)</strong> se dedica a promover el aprendizaje y la práctica de habilidades diplomáticas, de debate y negociación a través de simulaciones como Modelos de Naciones Unidas y el Parlamento Británico.</p>
         
         <div class="row g-4">
             <!-- Visión -->
@@ -40,23 +40,57 @@
                 <div class="team-member">
                     <img src="https://via.placeholder.com/120" alt="Presidenta">
                     <h6>Presidenta</h6>
-                    <p>María González</p>
+                    <p>Melissa Chavez</p>
                 </div>
             </div>
             <!-- Miembro 2 -->
             <div class="col-md-4">
                 <div class="team-member">
                     <img src="https://via.placeholder.com/120" alt="Líder de Talento Humano">
-                    <h6>Líder de Talento Humano</h6>
-                    <p>Juan Pérez</p>
+                    <h6>Coordinador Estrategico</h6>
+                    <p>Israel Moreno</p>
                 </div>
             </div>
             <!-- Miembro 3 -->
             <div class="col-md-4">
                 <div class="team-member">
                     <img src="https://via.placeholder.com/120" alt="Coordinador Académico">
-                    <h6>Coordinador Académico</h6>
+                    <h6>Visepresidenta</h6>
+                    <p>Haddy Andrango</p>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4 text-center">
+            <!-- Miembro 4 -->
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/120" alt="Presidenta">
+                    <h6>Coordinador Academico</h6>
+                    <p>Josue Sueasnavas</p>
+                </div>
+            </div>
+            <!-- Miembro 5 -->
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/120" alt="Líder de Talento Humano">
+                    <h6>Lider Administrativo</h6>
+                    <p>Andrea Calderon</p>
+                </div>
+            </div>
+            <!-- Miembro 6 -->
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/120" alt="Coordinador Académico">
+                    <h6>Lider Comunicacion y Relaciones</h6>
                     <p>Laura Sánchez</p>
+                </div>
+            </div>
+            <!-- Miembro 6 -->
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/120" alt="Coordinador Académico">
+                    <h6>Lider de Talento Humano</h6>
+                    <p>Erick Herrera</p>
                 </div>
             </div>
         </div>
