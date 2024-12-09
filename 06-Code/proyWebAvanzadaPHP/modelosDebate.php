@@ -49,7 +49,7 @@
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="card">
-                        <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Cámara Alta">
+                        <img src="https://res.cloudinary.com/dp8wdwo5h/image/upload/v1733722467/torneo-bp-pagina-noticia_imagen_j0v1nc.jpg" class="card-img-top" alt="Cámara Alta">
                         <div class="card-body">
                             <h5 class="card-title">Cámara Alta</h5>
                             <p class="card-text">Conformada por los equipos que apoyan y argumentan a favor de la moción. Trabajan en conjunto para presentar las ideas más persuasivas.</p>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card">
-                        <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Cámara Baja">
+                        <img src="https://res.cloudinary.com/dp8wdwo5h/image/upload/v1733722381/British_Parliamentary_style_debate__Khmelnytskyi__Ukraine_c57efz.jpg" class="card-img-top" alt="Cámara Baja">
                         <div class="card-body">
                             <h5 class="card-title">Cámara Baja</h5>
                             <p class="card-text">Argumenta en contra de la moción presentada, desafiando las ideas de la Cámara Alta con creatividad y lógica.</p>

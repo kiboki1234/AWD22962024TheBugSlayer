@@ -18,9 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Ejecutar la consulta
     if ($stmt->execute()) {
-        echo "Mensaje enviado con éxito.";
+        //echo "Mensaje enviado con éxito.";
+        header('Location: ../contacts.php?status=success');
     } else {
-        echo "Error al enviar el mensaje.";
+        header('Location: ../contacts.php?status=error');
     }
 }
 ?>

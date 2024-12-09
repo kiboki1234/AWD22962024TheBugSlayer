@@ -62,7 +62,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Modelo ONU</h5>
                         <p>Simula las reuniones de la ONU, permitiendo a los participantes representar países y debatir sobre temas globales.</p>
-                        <a href="modelosDebate.html" class="btn btn-primary">Más Información</a>
+                        <a href="modelosDebate.php" class="btn btn-primary">Más Información</a>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Parlamento Británico</h5>
                         <p>Un formato dinámico de debate competitivo donde equipos argumentan a favor o en contra de una moción.</p>
-                        <a href="modelosDebate.html" class="btn btn-primary">Más Información</a>
+                        <a href="modelosDebate.php" class="btn btn-primary">Más Información</a>
                     </div>
                 </div>
             </div>
