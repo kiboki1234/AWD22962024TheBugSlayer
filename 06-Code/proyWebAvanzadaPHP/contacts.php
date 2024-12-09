@@ -42,7 +42,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="text" class="form-label">Numero de telefono</label>
-                    <input type="text" class="form-control" id="phone" name="phone" pattern="/^\+?\d{1,4}?[-.\s]?(\(?\d{1,3}?\)?[-.\s]?)?[\d\s.-]{7,}$/" maxlength="15" placeholder="Ejm: +593992622595 " required>
+                    <input type="text" class="form-control" id="phone" name="phone" maxlength="15" placeholder="Ejm: +593992622595 " required>
+                    
                 </div>
                 <div class="mb-3">
                     <label for="message" class="form-label">Mensaje</label>
@@ -54,6 +55,7 @@
     </div>
     <?php include_once './layouts/bottonWhatsApp.php';?>
     <script src="./assets/scriptsJs/menu.js"></script>
+    <script src="./assets/scriptsJs/validateNumber.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="./assets/scriptsJs/resetQuerys.js"></script>
   </body>
