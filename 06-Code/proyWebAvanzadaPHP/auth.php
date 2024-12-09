@@ -24,7 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     } else {
         // Mostrar alerta de credenciales inválidas y redirigir al login
-        header('Location: ./login.php?status=error');
+        echo "<script>
+                alert('Credenciales inválidas. Por favor, intenta de nuevo.');
+                window.location.href = './login.php';
+              </script>";
         exit();
     }
 }

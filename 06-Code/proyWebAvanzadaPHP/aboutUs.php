@@ -36,35 +36,61 @@
         <h2 class="section-title mt-5">Nuestro Equipo</h2>
         <div class="row g-4 text-center">
             <!-- Miembro 1 -->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="team-member">
-                    <img src="https://res.cloudinary.com/dp8wdwo5h/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1733635563/IMG_20241121_133433_m8kkbh.jpg" alt="Presidenta">
+                    <img src="https://via.placeholder.com/120" alt="Presidenta">
                     <h6>Presidenta</h6>
                     <p>Melissa Chavez</p>
                 </div>
             </div>
             <!-- Miembro 2 -->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="team-member">
-                    <img src="https://res.cloudinary.com/dp8wdwo5h/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1733635564/IMG_20241121_133448_g1klgh.jpg" alt="Líder de Talento Humano">
+                    <img src="https://via.placeholder.com/120" alt="Líder de Talento Humano">
                     <h6>Coordinador Estrategico</h6>
                     <p>Israel Moreno</p>
                 </div>
             </div>
             <!-- Miembro 3 -->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="team-member">
-                    <img src="https://res.cloudinary.com/dp8wdwo5h/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1733723865/Screenshot_2024-12-09_005704_wa7hqv.png" alt="Coordinador Académico">
+                    <img src="https://via.placeholder.com/120" alt="Coordinador Académico">
                     <h6>Visepresidenta</h6>
                     <p>Haddy Andrango</p>
                 </div>
             </div>
+        </div>
+        <div class="row g-4 text-center">
             <!-- Miembro 4 -->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="team-member">
-                    <img src="https://res.cloudinary.com/dp8wdwo5h/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1733723545/IMG_4821_fzew1q.jpg" alt="Presidenta">
+                    <img src="https://via.placeholder.com/120" alt="Presidenta">
                     <h6>Coordinador Academico</h6>
                     <p>Josue Sueasnavas</p>
+                </div>
+            </div>
+            <!-- Miembro 5 -->
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/120" alt="Líder de Talento Humano">
+                    <h6>Lider Administrativo</h6>
+                    <p>Andrea Calderon</p>
+                </div>
+            </div>
+            <!-- Miembro 6 -->
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/120" alt="Coordinador Académico">
+                    <h6>Lider Comunicacion y Relaciones</h6>
+                    <p>Laura Sánchez</p>
+                </div>
+            </div>
+            <!-- Miembro 6 -->
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/120" alt="Coordinador Académico">
+                    <h6>Lider de Talento Humano</h6>
+                    <p>Erick Herrera</p>
                 </div>
             </div>
         </div>

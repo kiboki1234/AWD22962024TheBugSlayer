@@ -29,10 +29,8 @@ body {
 }
 .card img {
     height: 200px;
-    width: auto;
     object-fit: cover;
 }
-
 .btn-primary {
     background-color: #ee3a43;
     border-color: #ee3a43;
