@@ -18,7 +18,6 @@
                 // Menú específico para administradores
                 if ($userRole === 'admin') {
                     echo '<li class="nav-item"><a class="nav-link" href="./manage_users.php">Administrar Usuarios</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="settings.php">Configuraciones</a></li>';
                 }
 
                 // Menú específico para usuarios regulares

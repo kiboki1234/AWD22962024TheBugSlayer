@@ -10,20 +10,20 @@ $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $rol = $_POST['rol'];
 
 try {
-    // Primero inserta en miembros
+    // Insertar en la tabla miembros
     $queryMiembro = "INSERT INTO miembros (nombre, cedula, id_universitario, carrera) VALUES (:nombre, :cedula, :idUniversitario, :carrera)";
-    $stmtMiembro = $conn->prepare($queryMiembro);
+    $stmtMiembro = $pdo->prepare($queryMiembro);
     $stmtMiembro->execute([
         ':nombre' => $nombre,
         ':cedula' => $cedula,
         ':idUniversitario' => $idUniversitario,
         ':carrera' => $carrera
     ]);
-    $idMiembro = $conn->lastInsertId();
+    $idMiembro = $pdo->lastInsertId();
 
-    // Luego inserta en usuarios
+    // Insertar en la tabla usuarios
     $queryUsuario = "INSERT INTO usuarios (id_miembro, username, password, rol) VALUES (:idMiembro, :username, :password, :rol)";
-    $stmtUsuario = $conn->prepare($queryUsuario);
+    $stmtUsuario = $pdo->prepare($queryUsuario);
     $stmtUsuario->execute([
         ':idMiembro' => $idMiembro,
         ':username' => $username,

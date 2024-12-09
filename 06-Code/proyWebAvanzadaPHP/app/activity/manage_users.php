@@ -172,49 +172,74 @@ require_once '../config/config.php';
 
       // Agregar Usuario
       $('#addUserForm').on('submit', function (e) {
-        e.preventDefault();
-        $.ajax({
-          url: '../middleware/add_user.php',
-          type: 'POST',
-          data: $(this).serialize(),
-          success: function (response) {
+    e.preventDefault();
+    console.log($(this).serialize()); // Para depuración
+    $.ajax({
+        url: '../middleware/add_user.php',
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function (response) {
             const res = JSON.parse(response);
             if (res.status === 'success') {
-              $('#addUserModal').modal('hide');
-              loadUsers();
-              alert(res.message);
+                $('#addUserModal').modal('hide');
+                loadUsers();
+                alert(res.message);
             } else {
-              alert(res.message);
+                alert(res.message);
             }
-          },
-          error: function () {
+        },
+        error: function () {
             alert('Error al agregar el usuario.');
-          }
-        });
-      });
+        }
+    });
+});
+
 
       // Editar Usuario
       $('#editUserForm').on('submit', function (e) {
-        e.preventDefault();
-        $.ajax({
-          url: '../middleware/edit_user.php',
-          type: 'POST',
-          data: $(this).serialize(),
-          success: function (response) {
+    e.preventDefault();
+    $.ajax({
+        url: '../middleware/edit_user.php',
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function (response) {
             const res = JSON.parse(response);
             if (res.status === 'success') {
-              $('#editUserModal').modal('hide');
-              loadUsers();
-              alert(res.message);
+                $('#editUserModal').modal('hide');
+                loadUsers();
+                alert(res.message);
             } else {
-              alert(res.message);
+                alert(res.message);
             }
-          },
-          error: function () {
+        },
+        error: function () {
             alert('Error al editar el usuario.');
-          }
+        }
+    });
+});
+
+function deleteUser(idUsuario) {
+    if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
+        $.ajax({
+            url: '../middleware/delete_user.php',
+            type: 'POST',
+            data: { id_usuario: idUsuario },
+            success: function (response) {
+                const res = JSON.parse(response);
+                if (res.status === 'success') {
+                    loadUsers();
+                    alert(res.message);
+                } else {
+                    alert(res.message);
+                }
+            },
+            error: function () {
+                alert('Error al eliminar el usuario.');
+            }
         });
-      });
+    }
+}
+
 
       // Cargar datos en modal de edición
       $('#editUserModal').on('show.bs.modal', function (event) {

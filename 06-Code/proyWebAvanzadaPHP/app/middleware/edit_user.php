@@ -15,7 +15,7 @@ try {
     $queryMiembro = "UPDATE miembros m
                      SET m.nombre = :nombre, m.cedula = :cedula, m.id_universitario = :idUniversitario, m.carrera = :carrera
                      WHERE m.id_miembro = (SELECT u.id_miembro FROM usuarios u WHERE u.id_usuario = :idUsuario)";
-    $stmtMiembro = $conn->prepare($queryMiembro);
+    $stmtMiembro = $pdo->prepare($queryMiembro);
     $stmtMiembro->execute([
         ':nombre' => $nombre,
         ':cedula' => $cedula,
@@ -28,7 +28,7 @@ try {
     $queryUsuario = "UPDATE usuarios 
                      SET username = :username, rol = :rol" . ($password ? ", password = :password" : "") . " 
                      WHERE id_usuario = :idUsuario";
-    $stmtUsuario = $conn->prepare($queryUsuario);
+    $stmtUsuario = $pdo->prepare($queryUsuario);
     $params = [
         ':username' => $username,
         ':rol' => $rol,
