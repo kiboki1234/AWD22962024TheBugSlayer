@@ -1,6 +1,6 @@
 <?php
-//require_once '../middleware/authMiddleWare.php';
-//verificarSesion();
+require_once '../middleware/authMiddleWare.php';
+verificarSesion();
 ?>
 <!DOCTYPE html>
 <html lang="en">
