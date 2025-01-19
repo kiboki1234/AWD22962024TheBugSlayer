@@ -1,0 +1,61 @@
+proyecto/
+│
+├── assets/              # Archivos estáticos y recursos del frontend
+│   ├── css/             # Archivos CSS
+│   │   └── estilos.css
+│   ├── js/              # Archivos JavaScript
+│   │   └── scripts.js
+│   ├── img/             # Imágenes y recursos gráficos
+│   │   └── logo.png
+│   └── vendor/          # Librerías externas (Bootstrap, jQuery, etc.)
+│       ├── bootstrap/
+│       └── fontawesome/
+│
+├── config/              # Configuración general del sistema
+│   ├── database.php     # Configuración de conexión a la base de datos
+│   └── app.php          # Configuración global (constantes, rutas, etc.)
+│
+├── controllers/         # Controladores del sistema
+│   ├── AuthController.php  # Manejo de autenticación
+│   ├── AsistenciasController.php  # Controlador de asistencias
+│   ├── UsuariosController.php  # Controlador de usuarios
+│   └── ActivityController.php  # Controlador de actividades
+│
+├── models/              # Modelos de la base de datos
+│   ├── Usuario.php      # Modelo de la tabla usuarios
+│   ├── Asistencia.php   # Modelo de la tabla asistencias
+│   ├── Actividad.php    # Modelo de la tabla actividades
+│   └── Documento.php    # Modelo de la tabla documentos
+│
+├── views/               # Archivos HTML con lógica PHP
+│   ├── auth/            # Vistas relacionadas con la autenticación
+│   │   ├── login.php
+│   │   └── register.php
+│   ├── asistencias/     # Vistas relacionadas con asistencias
+│   │   ├── index.php
+│   │   └── historial.php
+│   ├── activity/        # Vista del tracking de actividad
+│   │   └── index.php
+│   ├── usuarios/        # Vistas para manejo de usuarios
+│   │   ├── index.php
+│   │   └── editar.php
+│   └── layouts/         # Plantillas generales
+│       ├── header.php
+│       ├── footer.php
+│       └── navbar.php
+│
+├── middleware/          # Middleware para validaciones y permisos
+│   └── AuthMiddleware.php   # Verificación de sesiones y roles
+│
+├── public/              # Punto de entrada del sistema (document root)
+│   ├── index.php        # Entrada principal
+│   └── .htaccess        # Reglas de enrutamiento y seguridad
+│
+├── storage/             # Archivos generados o subidos
+│   ├── logs/            # Archivos de log
+│   └── uploads/         # Documentos subidos por usuarios
+│
+├── tests/               # Pruebas unitarias y funcionales
+│   └── TestAsistencias.php
+│
+└── README.md            # Documentación básica del proyecto

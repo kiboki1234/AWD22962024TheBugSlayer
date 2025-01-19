@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Documentos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background-color: #ee3a43;
+        }
+        .logo-navbar{
+            height: 40px;
+            width: 40px;
+        }
+        .navbar-brand, .nav-link {
+            color: #fefefe !important;
+        }
+        .navbar-nav .nav-item:hover {
+            background-color: #c32d37;
+            border-color: #c32d37;
+            border-radius: 5px;
+        }
+        body {
+            background-color: #fefefe;
+            color: #333;
+        }
+        .btn-primary {
+            background-color: #ee3a43;
+            border-color: #ee3a43;
+        }
+        .btn-primary:hover {
+            background-color: #cc323b;
+            border-color: #cc323b;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <img class="logo-navbar" src="./assets/img/logonav.png" alt="logo">
+            <a class="navbar-brand" href="./index.html"><strong>CPED</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <!-- Los elementos del menú se generan dinámicamente -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Gestión de Documentos</h1>
+
+        <!-- Tabla de Documentos -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Autor</th>
+                    <th>Fecha Publicación</th>
+                    <th>Tipo</th>
+                    <th>Área</th>
+                    <th>Acceso Restringido</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-documentos">
+                <!-- Datos quemados -->
+                <tr>
+                    <td>1</td>
+                    <td>Guía de Debate ONU</td>
+                    <td>Manual sobre procedimientos de debate en la ONU.</td>
+                    <td>Departamento de Talento Humano</td>
+                    <td>2024-11-15</td>
+                    <td>Guía</td>
+                    <td>Talento Humano</td>
+                    <td>No</td>
+                    <td>uploads/documentos/guia-onu.pdf</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Reglamento BP</td>
+                    <td>Normas y reglas para el modelo Parlamento Británico.</td>
+                    <td>Equipo de Debate</td>
+                    <td>2024-11-16</td>
+                    <td>Reglamento</td>
+                    <td>Debates</td>
+                    <td>Sí</td>
+                    <td>uploads/documentos/reglamento-bp.pdf</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Formato de Asistencia</td>
+                    <td>Plantilla para registrar asistencia de miembros.</td>
+                    <td>Talento Humano</td>
+                    <td>2024-11-18</td>
+                    <td>Formato</td>
+                    <td>Talento Humano</td>
+                    <td>No</td>
+                    <td>uploads/documentos/formato-asistencia.docx</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Guía para Modelos ONU</td>
+                    <td>Introducción a las simulaciones de la ONU.</td>
+                    <td>Equipo Académico</td>
+                    <td>2024-11-20</td>
+                    <td>Guía</td>
+                    <td>Académico</td>
+                    <td>No</td>
+                    <td>uploads/documentos/guia-modelos-onu.pdf</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Manual de Procedimientos</td>
+                    <td>Guía interna para la gestión del club.</td>
+                    <td>Directiva</td>
+                    <td>2024-11-21</td>
+                    <td>Manual</td>
+                    <td>Administración</td>
+                    <td>Sí</td>
+                    <td>uploads/documentos/manual-procedimientos.pdf</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Formulario para agregar documentos -->
+        <h3 class="mt-5">Agregar Nuevo Documento</h3>
+        <form id="form-documento" class="mt-3">
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título del Documento</label>
+                <input type="text" class="form-control" id="titulo" placeholder="Ej. Guía de MUN" required>
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" id="descripcion" rows="3" placeholder="Descripción breve del documento" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="autor" class="form-label">Autor</label>
+                <input type="text" class="form-control" id="autor" placeholder="Ej. Departamento de Talento Humano" required>
+            </div>
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha Publicación</label>
+                <input type="date" class="form-control" id="fecha" required>
+            </div>
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Tipo de Documento</label>
+                <select class="form-select" id="tipo" required>
+                    <option value="Guía">Guía</option>
+                    <option value="Reglamento">Reglamento</option>
+                    <option value="Formato">Formato</option>
+                    <option value="Manual">Manual</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="area" class="form-label">Área Asociada</label>
+                <input type="text" class="form-control" id="area" placeholder="Ej. Talento Humano" required>
+            </div>
+            <div class="mb-3">
+                <label for="acceso" class="form-label">Acceso Restringido</label>
+                <select class="form-select" id="acceso" required>
+                    <option value="No">No</option>
+                    <option value="Sí">Sí</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar Documento</button>
+        </form>
+    </div>
+    <script src="./menu.js"></script>
+    <script>
+        const tablaDocumentos = document.getElementById('tabla-documentos');
+        const formDocumento = document.getElementById('form-documento');
+        let idActual = 6;
+
+        formDocumento.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const titulo = document.getElementById('titulo').value;
+            const descripcion = document.getElementById('descripcion').value;
+            const autor = document.getElementById('autor').value;
+            const fecha = document.getElementById('fecha').value;
+            const tipo = document.getElementById('tipo').value;
+            const area = document.getElementById('area').value;
+            const acceso = document.getElementById('acceso').value;
+
+            const nuevaFila = document.createElement('tr');
+            nuevaFila.innerHTML = `
+                <td>${idActual}</td>
+                <td>${titulo}</td>
+                <td>${descripcion}</td>
+                <td>${autor}</td>
+                <td>${fecha}</td>
+                <td>${tipo}</td>
+                <td>${area}</td>
+                <td>${acceso}</td>
+                <td>--</td>
+            `;
+
+            tablaDocumentos.appendChild(nuevaFila);
+            idActual++;
+            formDocumento.reset();
+        });
+    </script>
+</body>
+</html>
