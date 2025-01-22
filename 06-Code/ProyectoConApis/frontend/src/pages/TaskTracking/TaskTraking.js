@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "../common/Navbar";
+import Navbar from "../common/AppNavbar";
 import TaskDetailsModal from "./TaskDetailsModal";
 import Footer from "../common/Footer";
 import "../css/stylesTaskTracking.css";
