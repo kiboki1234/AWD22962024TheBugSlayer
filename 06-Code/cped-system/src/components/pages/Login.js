@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar";
 import BottonWhatsApp from "../ButtonWhatsApp";
-import Footer from "../Footer";
-import "../css/stylesLogin.css"; // Asegúrate de tener un archivo de estilos si es necesario
+import "../css/stylesLogin.css";
 
 const Login = () => {
     const [modalInfo, setModalInfo] = useState({ title: "Modal title", text: "..." });
@@ -12,19 +11,48 @@ const Login = () => {
         modal.show();
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch("http://localhost:5000/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    username: e.target.username.value,
+                    password: e.target.passwordLogin.value,
+                }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                // Mostrar mensaje de éxito y redirigir
+                setModalInfo({ title: "¡Éxito!", text: "Inicio de sesión exitoso." });
+                localStorage.setItem("token", data.token); // Guardar token en el almacenamiento local
+            } else {
+                // Mostrar mensaje de error
+                setModalInfo({ title: "Error", text: data.message || "Algo salió mal." });
+            }
+            handleModal();
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error);
+            setModalInfo({ title: "Error", text: "No se pudo conectar al servidor." });
+            handleModal();
+        }
+    };
+
     return (
         <>
             <Navbar />
 
             <div className="container pt-4">
-                <form action="./auth.php" method="POST" className="login-container form-control">
+                <form onSubmit={handleSubmit} className="login-container form-control">
                     <h1 className="h3 mb-3 fw-normal">Accede a tu cuenta del club CPED</h1>
                     <div className="form-floating mb-3">
-                        <input type="text" className="form-control" id="username" name="username" placeholder="Username" />
+                        <input type="text" className="form-control" id="username" name="username" placeholder="Username" required />
                         <label htmlFor="username">Usuario</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input type="password" className="form-control" id="passwordLogin" name="passwordLogin" placeholder="Password" />
+                        <input type="password" className="form-control" id="passwordLogin" name="passwordLogin" placeholder="Password" required />
                         <label htmlFor="passwordLogin">Contraseña</label>
                     </div>
                     <button className="btn btn-primary w-100 py-2" type="submit">Iniciar Sesion</button>
@@ -49,7 +77,6 @@ const Login = () => {
             </div>
 
             <BottonWhatsApp />
-        
         </>
     );
 };
