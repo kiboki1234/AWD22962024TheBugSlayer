@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import axios from "axios";
-
+import API_BASE_URL from "../../api";
 const localizer = momentLocalizer(moment);
 
 const CalendarComponent = () => {
@@ -15,7 +15,7 @@ const CalendarComponent = () => {
     useEffect(() => {
         const fetchPractices = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/practices/all");
+                const response = await axios.get(`${API_BASE_URL}/api/practices/all`);
                 setPractices(response.data);
                 setLoading(false);
             } catch (err) {

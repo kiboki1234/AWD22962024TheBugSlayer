@@ -12,13 +12,17 @@ const strategicCoordinatorRoutes = require('./routes/strategicCoordinatorRoutes'
 const leaderRoutes = require('./routes/leaderRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const practiceRoutes = require('./routes/practiceRoutes');
+const news= require('./routes/newsRoutes');
+const API_BASE_URL = require("./api");
+
 
 dotenv.config();
 connectDB();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: API_BASE_URL, credentials: true }));
+
 
 // Rutas
 app.use('/api/auth', authRoutes);
@@ -30,6 +34,8 @@ app.use('/api/strategicCoordinators', strategicCoordinatorRoutes);
 app.use('/api/leaders', leaderRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/practices', practiceRoutes);
+app.use('/api/news', news);
+
 
 // Manejo de errores
 app.use(errorHandler);

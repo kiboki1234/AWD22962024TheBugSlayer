@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PracticeDetails from "./PracticeDetails";
+import  API_BASE_URL  from "../../api";
 
 const PracticesList = () => {
     const [practices, setPractices] = useState([]);
@@ -14,7 +15,7 @@ const PracticesList = () => {
 
     const fetchPractices = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/practices/all");
+            const response = await axios.get(`${API_BASE_URL}/api/practices/all`);
             setPractices(response.data);
         } catch (error) {
             console.error("Error al obtener prácticas:", error);

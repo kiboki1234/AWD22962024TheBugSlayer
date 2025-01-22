@@ -52,6 +52,12 @@ const Navbar = () => {
                   Administrador de Usuarios
                 </Link>
               </li>
+              <li className="nav-item">
+              <Link className="nav-link" to="/NewsList">
+                Noticias
+              </Link>
+
+              </li>
               <ProfileDropdown/>
               {/* <li className="nav-item">
                 <Link className="nav-link" to="/events">

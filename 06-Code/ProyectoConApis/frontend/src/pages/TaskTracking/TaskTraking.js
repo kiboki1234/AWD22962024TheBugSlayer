@@ -4,6 +4,7 @@ import Navbar from "../common/Navbar";
 import TaskDetailsModal from "./TaskDetailsModal";
 import Footer from "../common/Footer";
 import "../css/stylesTaskTracking.css";
+import API_BASE_URL from "../../api";
 
 const TaskTracking = () => {
   const [tasks, setTasks] = useState([]);
@@ -17,7 +18,7 @@ const TaskTracking = () => {
   // Obtener tareas desde el backend
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/tasks/all");
+      const response = await axios.get(`${API_BASE_URL}/api/tasks/all`);
       setTasks(response.data);
     } catch (error) {
       console.error("Error al obtener tareas:", error);
@@ -30,7 +31,7 @@ const TaskTracking = () => {
     setSelectedTask(updatedTask);
 
     try {
-      await axios.put(`http://localhost:5000/api/tasks/update/${selectedTask._id}`, updatedTask);
+      await axios.put(`${API_BASE_URL}/api/tasks/update/${selectedTask._id}`, updatedTask);
       setTasks(tasks.map((task) => (task._id === updatedTask._id ? updatedTask : task)));
     } catch (error) {
       console.error("Error al actualizar la tarea:", error);
@@ -61,7 +62,7 @@ const TaskTracking = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:5000/api/tasks/create", newTask);
+      const response = await axios.post(`${API_BASE_URL}/api/tasks/create`, newTask);
       setTasks([...tasks, response.data.task]);
       e.target.reset();
     } catch (error) {

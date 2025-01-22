@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "../common/Footer";
+import API_BASE_URL from "../../api";
 
 const UserManagement = () => {
     const [users, setUsers] = useState([]);
@@ -20,7 +21,7 @@ const UserManagement = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/users/get-all-users");
+            const response = await axios.get(`${API_BASE_URL}/api/users/get-all-users`);
             setUsers(response.data);
         } catch (error) {
             console.error("Error al obtener usuarios:", error);
@@ -35,7 +36,7 @@ const UserManagement = () => {
     const handleCreateUser = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/api/users/create-user", newUser);
+            const response = await axios.post(`${API_BASE_URL}/api/users/create-user`, newUser);
             setUsers([...users, response.data.user]);
             setNewUser({
                 name: "",

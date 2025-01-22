@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "../../api";
 
 const CreatePractice = () => {
     const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const CreatePractice = () => {
         };
 
         try {
-            const response = await axios.post("http://localhost:5000/api/practices/create", practiceData);
+            const response = await axios.post(`${API_BASE_URL}/api/practices/create`, practiceData);
             setSuccessMessage(response.data.message);
             setFormData({
                 title: "",
