@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const CreatePractice = () => {
     const [formData, setFormData] = useState({
@@ -8,30 +9,38 @@ const CreatePractice = () => {
     });
     const [successMessage, setSuccessMessage] = useState("");
 
-    const handleSubmit = (e) => {
+    // Manejar el envío del formulario
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.title || !formData.date || !formData.startTime) {
             alert("Todos los campos son obligatorios.");
             return;
         }
+
         const endTime = calculateEndTime(formData.startTime);
         const practiceData = {
             ...formData,
             endTime
         };
-        // Lógica para guardar practiceData en la base de datos
-        console.log(practiceData);
-        setSuccessMessage("Práctica creada exitosamente.");
-        setFormData({
-            title: "",
-            date: "",
-            startTime: ""
-        });
-        setTimeout(() => {
-            setSuccessMessage("");
-        }, 3000);
+
+        try {
+            const response = await axios.post("http://localhost:5000/api/practices/create", practiceData);
+            setSuccessMessage(response.data.message);
+            setFormData({
+                title: "",
+                date: "",
+                startTime: ""
+            });
+
+            setTimeout(() => {
+                setSuccessMessage("");
+            }, 3000);
+        } catch (error) {
+            console.error("Error al crear práctica:", error);
+        }
     };
 
+    // Función para calcular la hora de finalización (2 horas después de la hora de inicio)
     const calculateEndTime = (startTime) => {
         const [hours, minutes] = startTime.split(":").map(Number);
         const endHours = (hours + 2) % 24;

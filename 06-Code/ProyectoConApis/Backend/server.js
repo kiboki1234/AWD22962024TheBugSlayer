@@ -10,6 +10,8 @@ const presidentRoutes = require('./routes/presidentRoutes');
 const memberRoutes = require('./routes/memberRoutes');
 const strategicCoordinatorRoutes = require('./routes/strategicCoordinatorRoutes');
 const leaderRoutes = require('./routes/leaderRoutes');
+const taskRoutes = require('./routes/taskRoutes');
+const practiceRoutes = require('./routes/practiceRoutes');
 
 dotenv.config();
 connectDB();
@@ -26,6 +28,9 @@ app.use('/api/presidents', presidentRoutes);
 app.use('/api/members', memberRoutes);
 app.use('/api/strategicCoordinators', strategicCoordinatorRoutes);
 app.use('/api/leaders', leaderRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/practices', practiceRoutes);
+
 // Manejo de errores
 app.use(errorHandler);
 

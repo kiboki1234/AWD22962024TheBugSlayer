@@ -1,17 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import axios from "axios";
 
 const localizer = momentLocalizer(moment);
 
+const CalendarComponent = () => {
+    const [practices, setPractices] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-const CalendarComponent = ({ practices }) => {
-    const events = practices.map(practice => ({
+    // Obtener prácticas desde el backend
+    useEffect(() => {
+        const fetchPractices = async () => {
+            try {
+                const response = await axios.get("http://localhost:5000/api/practices/all");
+                setPractices(response.data);
+                setLoading(false);
+            } catch (err) {
+                console.error("Error al cargar prácticas:", err);
+                setError("No se pudieron cargar las prácticas.");
+                setLoading(false);
+            }
+        };
+        fetchPractices();
+    }, []);
+
+    // Convertir prácticas en eventos para el calendario
+    const events = practices.map((practice) => ({
         title: practice.title,
-        start: new Date(practice.date + 'T' + practice.startTime),
-        end: new Date(practice.date + 'T' + practice.endTime)
+        start: new Date(practice.date + "T" + practice.startTime),
+        end: new Date(practice.date + "T" + practice.endTime),
     }));
+
+    if (loading) {
+        return <div className="text-center">Cargando calendario...</div>;
+    }
+
+    if (error) {
+        return <div className="text-danger text-center">{error}</div>;
+    }
+
     return (
         <div className="card mb-4">
             <div className="card-header bg-primary text-white">Calendario de Prácticas</div>
@@ -22,7 +52,8 @@ const CalendarComponent = ({ practices }) => {
                     startAccessor="start"
                     endAccessor="end"
                     style={{ height: 500 }}
-                    view={['week']}
+                    defaultView="week"
+                    views={["week", "month", "day"]}
                 />
             </div>
         </div>

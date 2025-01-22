@@ -1,22 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import PracticeDetails from "./PracticeDetails";
 
 const PracticesList = () => {
+    const [practices, setPractices] = useState([]);
     const [selectedPractice, setSelectedPractice] = useState(null);
     const [showModal, setShowModal] = useState(false);
 
-    const practices = [
-        { id: 1, title: "Práctica 1", date: "2025-01-21" },
-        { id: 2, title: "Práctica 2", date: "2025-01-22" }
-    ];
+    // Obtener prácticas desde el backend
+    useEffect(() => {
+        fetchPractices();
+    }, []);
 
+    const fetchPractices = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/api/practices/all");
+            setPractices(response.data);
+        } catch (error) {
+            console.error("Error al obtener prácticas:", error);
+        }
+    };
+
+    // Manejar la selección de práctica para mostrar detalles
     const handleSelectPractice = (practice) => {
         setSelectedPractice(practice);
         setShowModal(true);
     };
 
+    // Cerrar modal de detalles
     const handleCloseModal = () => {
         setShowModal(false);
+        setSelectedPractice(null);
     };
 
     return (
@@ -24,19 +38,28 @@ const PracticesList = () => {
             <div className="card mb-4">
                 <div className="card-header bg-primary text-white">Lista de Prácticas</div>
                 <div className="card-body">
-                    <ul className="list-group">
-                        {practices.map((practice) => (
-                            <li key={practice.id} className="list-group-item d-flex justify-content-between align-items-center">
-                                {practice.title} - {practice.date}
-                                <button className="btn btn-info" onClick={() => handleSelectPractice(practice)}>Ver Detalles</button>
-                            </li>
-                        ))}
-                    </ul>
+                    {practices.length > 0 ? (
+                        <ul className="list-group">
+                            {practices.map((practice) => (
+                                <li
+                                    key={practice._id}
+                                    className="list-group-item d-flex justify-content-between align-items-center"
+                                >
+                                    {practice.title} - {practice.date}
+                                    <button className="btn btn-info" onClick={() => handleSelectPractice(practice)}>
+                                        Ver Detalles
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p className="text-muted">No hay prácticas disponibles.</p>
+                    )}
                 </div>
             </div>
             {selectedPractice && (
                 <PracticeDetails
-                    practiceId={selectedPractice.id}
+                    practice={selectedPractice}
                     show={showModal}
                     handleClose={handleCloseModal}
                 />
