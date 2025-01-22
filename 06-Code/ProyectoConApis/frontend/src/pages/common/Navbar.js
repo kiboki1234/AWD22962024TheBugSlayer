@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProfileDropdown from './ProfileDropdown';
 import '../css/style.css';
 
 // const Navbar = () => (
@@ -46,6 +47,12 @@ const Navbar = () => {
                   Task Tracking
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/UserManagement">
+                  Administrador de Usuarios
+                </Link>
+              </li>
+              <ProfileDropdown/>
               {/* <li className="nav-item">
                 <Link className="nav-link" to="/events">
                   Eventos
