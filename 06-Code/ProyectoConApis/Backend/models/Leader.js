@@ -6,3 +6,4 @@ const leaderSchema = new mongoose.Schema({
 
 const Leader = mongoose.model('Leader', leaderSchema);
 module.exports = Leader;
+ 

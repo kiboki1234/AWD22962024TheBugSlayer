@@ -1,8 +1,20 @@
-// Navbar.js
-import React from "react";
-import { Link } from "react-router-dom";
-//import "./Navbar.css"; // Archivo de estilos opcional para la barra de navegación
-import logoIcon from "./assets/img/logonav.png"; // Importar la imagen del logo
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../css/style.css';
+
+// const Navbar = () => (
+//   <nav>
+//     <ul>
+//       <li><Link to="/dashboard">Dashboard</Link></li>
+//       <li><Link to="/clients">Clientes</Link></li>
+//       <li><Link to="/appointments">Citas</Link></li>
+//       <li><Link to="/adoptions">Adopciones</Link></li>
+//       <li><Link to="/">Salir</Link></li>
+//     </ul>
+//   </nav>
+// );
+
+import logoIcon from "../img/logonav.png";
 const Navbar = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -25,11 +37,16 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/about-us">
-                  Sobre Nosotros
+                <Link className="nav-link" to="/">
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/TaskTracking">
+                  Task Tracking
+                </Link>
+              </li>
+              {/* <li className="nav-item">
                 <Link className="nav-link" to="/events">
                   Eventos
                 </Link>
@@ -48,13 +65,12 @@ const Navbar = () => {
                 <Link className="nav-link" to="/login">
                   Login
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
       </nav>
     );
   };
-  
 
 export default Navbar;
