@@ -72,7 +72,6 @@ const TaskTracking = () => {
 
   return (
     <>
-      <Navbar />
       <div className="container pt-4 mt-4">
         <h1 className="text-center mb-4">Seguimiento de Tareas</h1>
 

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import CustomModal from "./ModalLogin";
 import "../css/stylesLogin.css";
 import API_BASE_URL from "../../../api";
+import { AuthContext } from "../../../components/AuthContext";
 const Login = () => {
     const [modalInfo, setModalInfo] = useState({ title: "Modal title", text: "..." });
     const [showModal, setShowModal] = useState(false);
+    const { login } = useContext(AuthContext);
 
     const handleModal = () => {
         setShowModal(true);
@@ -30,9 +32,7 @@ const Login = () => {
             if (response.ok) {
                 // Mostrar mensaje de éxito y redirigir
                 setModalInfo({ title: "¡Éxito!", text: "Inicio de sesión exitoso." });
-                localStorage.setItem("token", data.token); // Guardar token en el almacenamiento local
-                localStorage.setItem("user", JSON.stringify(data.user)); // Guardar información del usuario en el almacenamiento local
-                // Redirigir a la página principal de la aplicación
+                login(data.token, data.user); // Guardar token y usuario en el contexto de autenticación
                 window.location.href = "/";
             } else {
                 // Manejar diferentes mensajes de error

@@ -17,10 +17,11 @@ import TaskTracking from './pages/TaskTracking/TaskTraking';
 import UserManagement from './pages/userManagment/UserManagment';
 import NewsList from './components/NewsList';
 import AppNavbar from './pages/common/AppNavbar';
+import UserMessages from './pages/pagesLeaderTH/ToContact';
 
 
 function App() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, userRole } = useContext(AuthContext);
 
   return (
     <Router>
@@ -28,10 +29,18 @@ function App() {
       <Routes>
         {isAuthenticated ? (
           <>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/TaskTracking" element={<TaskTracking />} />
-            <Route path="/UserManagement" element={<UserManagement />} />
-            
+            <Route path="/" element={<TaskTracking />} />
+            {userRole === 'vice_president' && (
+              <>
+                <Route path="/dashBoard" element={<Dashboard />} />
+                <Route path="/UserManagement" element={<UserManagement />} />
+              </>
+            )}
+            {userRole === 'leader' && (
+              <>
+                <Route path="/messages" element={<UserMessages />} />
+              </>
+            )}
           </>
         ) : (
           <>
@@ -42,7 +51,6 @@ function App() {
             <Route path="/debateModels" element={<DebateModels />} />
             <Route path="/events" element={<Events />} />
             <Route path="/NewsList" element={<NewsList />} />
-
           </>
         )}
       </Routes>
