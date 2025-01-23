@@ -1,23 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import API_BASE_URL from '../../api';
+import { AuthContext } from '../../components/AuthContext';
 
 const AssignTask = ({ handleAssignTask }) => {
-
-  const [leaders, setLeaders] = useState([]);
+  const { userRole } = useContext(AuthContext);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const fetchLeaders = async () => {
+    const fetchUsers = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/api/leaders`);
-        setLeaders(response.data);
+        let response;
+        if (userRole === 'president' || userRole === 'strategic_coordinator') {
+          response = await axios.get(`${API_BASE_URL}/api/users`);
+        } else if (userRole === 'vice_president') {
+          response = await axios.get(`${API_BASE_URL}/api/users?role=leader`);
+        } else if (userRole === 'leader') {
+          response = await axios.get(`${API_BASE_URL}/api/users?role=member`);
+        }
+        setUsers(response.data);
       } catch (error) {
-        console.error("Error al obtener los líderes:", error);
+        console.error("Error al obtener los usuarios:", error);
       }
     };
 
-    fetchLeaders();
-  }, []);
+    fetchUsers();
+  }, [userRole]);
   return (
     <div className="col-md-6 mb-4">
       <h2>Asignar Tarea</h2>
@@ -34,9 +42,9 @@ const AssignTask = ({ handleAssignTask }) => {
           <label htmlFor="assignedTo" className="form-label">Asignar a</label>
           <select id="assignedTo" name="assignedTo" className="form-control" required>
             <option value="">Selecciona un usuario</option>
-            {leaders.map((leader) => (
-              <option key={leader._id} value={leader._id}>
-                {leader.assignedMembers.map(member => member.name).join(', ')}
+            {users.map((user) => (
+              <option key={user._id} value={user._id}>
+                {user.name}
               </option>
             ))}
           </select>

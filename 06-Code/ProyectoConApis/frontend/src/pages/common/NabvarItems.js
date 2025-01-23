@@ -33,6 +33,11 @@ const NavbarItems = () => {
               Mensajes
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/TaskTracking">
+              Task Tracking
+            </Link>
+          </li>
         </>
       )}
       {userRole === 'member' && (
