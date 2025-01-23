@@ -56,22 +56,36 @@ const TaskTracking = () => {
   // Manejar la creación de tareas
   const handleAssignTask = async (e) => {
     e.preventDefault();
-
+  
+    const token = localStorage.getItem('token');  // Asegurarse de obtener el token del almacenamiento
+    if (!token) {
+      console.error("No hay token de autenticación disponible");
+      return;
+    }
+  
     const newTask = {
-      title: e.target.taskTitle.value,
-      description: e.target.taskDescription.value,
-      assignedTo: e.target.assignedTo.value,
-      createdBy: "currentUser",
+      title: e.target.taskTitle.value.trim(),
+      description: e.target.taskDescription.value.trim(),
+      assignedTo: e.target.assignedTo.value.trim(),
     };
-
+  
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/tasks/create`, newTask);
+      const response = await axios.post(`${API_BASE_URL}/api/tasks/create`, newTask, {
+        headers: {
+          'Authorization': `Bearer ${token}`,  // Enviar token en encabezado
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log("Tarea creada con éxito:", response.data);
       setTasks([...tasks, response.data.task]);
       e.target.reset();
     } catch (error) {
-      console.error("Error al asignar tarea:", error);
+      console.error("Error al asignar tarea:", error.response?.data || error.message);
     }
   };
+  
+  
+
 
   return (
     <>

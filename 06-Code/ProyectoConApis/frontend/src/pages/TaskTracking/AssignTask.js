@@ -12,17 +12,18 @@ const AssignTask = ({ handleAssignTask }) => {
       try {
         let response;
         if (userRole === 'president' || userRole === 'strategic_coordinator') {
-          response = await axios.get(`${API_BASE_URL}/api/users`);
+          response = await axios.get(`${API_BASE_URL}/api/users/all`);
         } else if (userRole === 'vice_president') {
-          response = await axios.get(`${API_BASE_URL}/api/users?role=leader`);
+          response = await axios.get(`${API_BASE_URL}/api/users/all?role=leader`);
         } else if (userRole === 'leader') {
-          response = await axios.get(`${API_BASE_URL}/api/users?role=member`);
+          response = await axios.get(`${API_BASE_URL}/api/users/all?role=member`);
         }
         setUsers(response.data);
       } catch (error) {
-        console.error("Error al obtener los usuarios:", error);
+        console.error("Error al obtener los usuarios:", error.response ? error.response.data : error.message);
       }
     };
+    
 
     fetchUsers();
   }, [userRole]);

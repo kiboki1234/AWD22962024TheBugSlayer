@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 
-const TaskSchema = new mongoose.Schema({
+const taskSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
+  assignedTo: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   status: {
     type: String,
     enum: ['To Do', 'Doing', 'Done'],
     default: 'To Do'
   },
-  assignedTo: { type: String, required: true }, // Usuario asignado
-  createdBy: { type: String, required: true }, // Usuario que creó la tarea
 }, { timestamps: true });
 
-const Task = mongoose.model('Task', TaskSchema);
+const Task = mongoose.model('Task', taskSchema);
 module.exports = Task;
