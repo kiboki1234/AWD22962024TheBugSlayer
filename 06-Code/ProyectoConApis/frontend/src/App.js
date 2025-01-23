@@ -42,6 +42,7 @@ function App() {
               <>
                 <Route path="/" element={<Navigate to="/usermessages" />} />
                 <Route path="/usermessages" element={<UserMessages />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/TaskTracking" element={<TaskTracking />} />
               </>
             )}

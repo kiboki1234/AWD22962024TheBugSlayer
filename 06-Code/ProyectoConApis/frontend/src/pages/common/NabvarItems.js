@@ -28,10 +28,16 @@ const NavbarItems = () => {
       )}
       {userRole === 'leader' && (
         <>
+          
           <li className="nav-item">
             <Link className="nav-link" to="/">
               Mensajes
             </Link>
+          </li>
+          <li className="nav-item">
+              <Link className="nav-link" to="/dashboard">
+                Practicas
+              </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/TaskTracking">
