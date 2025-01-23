@@ -16,7 +16,8 @@ const news= require('./routes/newsRoutes');
 const API_BASE_URL = require("./api");
 const contactRoutes = require('./routes/contactRoutes');
 const { protect } = require('./middlewares/authMiddleware');
-
+const attendanceRoutes = require('./routes/attendanceRoutes');
+const documentsRoutes = require('./routes/attendanceDocumentRoutes');
 dotenv.config();
 connectDB();
 
@@ -38,6 +39,8 @@ app.use('/api/practices', practiceRoutes);
 app.use('/api/news', news);
 // Rutas de contacto
 app.use('/api/contact', contactRoutes);
+app.use('/api/attendances', attendanceRoutes);
+app.use('/api/documents', documentsRoutes);
 
 // Manejo de errores
 app.use(errorHandler);

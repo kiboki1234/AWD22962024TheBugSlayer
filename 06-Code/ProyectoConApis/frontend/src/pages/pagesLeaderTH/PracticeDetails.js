@@ -5,37 +5,96 @@ import API_BASE_URL from "../../api";
 
 const PracticeDetails = ({ practice, show, handleClose }) => {
     const [users, setUsers] = useState([]);
-    const [attendanceStatus, setAttendanceStatus] = useState(null);
+    const [attendanceStatus, setAttendanceStatus] = useState({});
+    const token = localStorage.getItem('token');
 
+    // Obtener la lista de usuarios y sus asistencias cuando se abre el modal
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchUsersAndAttendances = async () => {
             try {
-                const response = await axios.get(`${API_BASE_URL}/api/users/all`);
-                setUsers(response.data);
+                // Obtener usuarios
+                const usersResponse = await axios.get(`${API_BASE_URL}/api/users/all`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                setUsers(usersResponse.data);
+
+                // Obtener asistencias de la práctica
+                const attendanceResponse = await axios.get(`${API_BASE_URL}/api/attendances/practice/${practice._id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+
+                // Mapear asistencias para saber quién ya asistió
+                const attendanceMap = {};
+                attendanceResponse.data.forEach((attendance) => {
+                    attendanceMap[attendance.user._id] = true;
+                });
+
+                setAttendanceStatus(attendanceMap);
             } catch (error) {
-                console.error("Error al obtener los usuarios:", error);
+                console.error("Error al obtener los usuarios o asistencias:", error);
             }
         };
 
-        if (show) {
-            fetchUsers();
+        if (show && practice) {
+            fetchUsersAndAttendances();
         }
-    }, [show]);
+    }, [show, practice, token]);
 
+    // Registrar asistencia de un usuario
     const handleRegisterAttendance = async (userId) => {
         try {
-            const response = await axios.post(`${API_BASE_URL}/api/attendances`, {
-                user: userId,
-                practice: practice._id,
-                attended: true,
-                checkInTime: new Date(),
-            });
-            setAttendanceStatus({ userId, status: "success" });
-            setTimeout(() => setAttendanceStatus(null), 3000); // Mensaje desaparece después de 3 segundos
+            await axios.post(
+                `${API_BASE_URL}/api/attendances`,
+                {
+                    user: userId,
+                    practice: practice._id,
+                    attended: true,
+                    checkInTime: new Date(),
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+
+            // Actualizar el estado de asistencia en el frontend
+            setAttendanceStatus((prevStatus) => ({
+                ...prevStatus,
+                [userId]: true
+            }));
         } catch (error) {
-            setAttendanceStatus({ userId, status: "error" });
             console.error("Error al registrar la asistencia:", error);
-            setTimeout(() => setAttendanceStatus(null), 3000); // Mensaje desaparece después de 3 segundos
+        }
+    };
+
+    // Descargar informes en formato PDF o Excel
+    const downloadReport = async (type) => {
+        try {
+            const response = await axios.get(
+                `${API_BASE_URL}/api/documents/report/${type}/${practice._id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                    responseType: 'blob'
+                }
+            );
+
+            // Crear un enlace de descarga dinámico
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `asistencia_${practice.title}.${type === 'pdf' ? 'pdf' : 'xlsx'}`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } catch (error) {
+            console.error(`Error al descargar el archivo ${type}:`, error);
         }
     };
 
@@ -57,24 +116,32 @@ const PracticeDetails = ({ practice, show, handleClose }) => {
                     <h5>Lista de Asistencia</h5>
                     <ul className="list-group">
                         {users.map((user) => (
-                            <li key={user._id} className="list-group-item d-flex justify-content-between align-items-center">
+                            <li 
+                                key={user._id} 
+                                className={`list-group-item d-flex justify-content-between align-items-center 
+                                    ${attendanceStatus[user._id] ? "bg-success text-white" : ""}
+                                `}
+                            >
                                 {user.name}
                                 <Button
-                                    variant="primary"
+                                    variant={attendanceStatus[user._id] ? "success" : "primary"}
                                     onClick={() => handleRegisterAttendance(user._id)}
-                                    disabled={attendanceStatus && attendanceStatus.userId === user._id && attendanceStatus.status === "success"}
+                                    disabled={attendanceStatus[user._id]}
                                 >
-                                    {attendanceStatus && attendanceStatus.userId === user._id && attendanceStatus.status === "success"
-                                        ? "Asistencia Registrada"
-                                        : "Registrar Asistencia"}
+                                    {attendanceStatus[user._id] ? "Asistencia Registrada" : "Registrar Asistencia"}
                                 </Button>
                             </li>
                         ))}
                     </ul>
                 </div>
-                {attendanceStatus && attendanceStatus.status === "error" && (
-                    <div className="alert alert-danger mt-3">Error al registrar la asistencia.</div>
-                )}
+                <div className="d-flex justify-content-between mt-3">
+                    <button className="btn btn-danger" onClick={() => downloadReport('pdf')}>
+                        Descargar PDF
+                    </button>
+                    <button className="btn btn-success" onClick={() => downloadReport('excel')}>
+                        Descargar Excel
+                    </button>
+                </div>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>Cerrar</Button>
