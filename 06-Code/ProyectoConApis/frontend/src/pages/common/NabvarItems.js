@@ -7,15 +7,10 @@ const NavbarItems = () => {
 
   return (
     <>
-      <li className="nav-item">
-        <Link className="nav-link" to="/">
-          Task Tracking
-        </Link>
-      </li>
       {userRole === 'vice_president' && (
         <>
           <li className="nav-item">
-            <Link className="nav-link" to="/dashBoard">
+            <Link className="nav-link" to="/">
               Practicas
             </Link>
           </li>
@@ -24,13 +19,27 @@ const NavbarItems = () => {
               Administrador de Usuarios
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/TaskTracking">
+              Task Tracking
+            </Link>
+          </li>
         </>
       )}
       {userRole === 'leader' && (
         <>
           <li className="nav-item">
-            <Link className="nav-link" to="/messages">
+            <Link className="nav-link" to="/">
               Mensajes
+            </Link>
+          </li>
+        </>
+      )}
+      {userRole === 'member' && (
+        <>
+          <li className="nav-item">
+            <Link className="nav-link" to="/">
+                Home
             </Link>
           </li>
         </>

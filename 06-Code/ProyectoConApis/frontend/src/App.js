@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { AuthContext, AuthProvider } from './components/AuthContext';
 
 //landing
@@ -18,6 +18,7 @@ import UserManagement from './pages/userManagment/UserManagment';
 import NewsList from './components/NewsList';
 import AppNavbar from './pages/common/AppNavbar';
 import UserMessages from './pages/pagesLeaderTH/ToContact';
+import MemberView from './pages/memberView/MemberView';
 
 
 function App() {
@@ -29,16 +30,25 @@ function App() {
       <Routes>
         {isAuthenticated ? (
           <>
-            <Route path="/" element={<TaskTracking />} />
             {userRole === 'vice_president' && (
               <>
-                <Route path="/dashBoard" element={<Dashboard />} />
+                <Route path="/" element={<Navigate to="/dashboard" />} />
+                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/UserManagement" element={<UserManagement />} />
+                <Route path="/TaskTracking" element={<TaskTracking />} />
               </>
             )}
             {userRole === 'leader' && (
               <>
-                <Route path="/messages" element={<UserMessages />} />
+                <Route path="/" element={<Navigate to="/usermessages" />} />
+                <Route path="/usermessages" element={<UserMessages />} />
+                <Route path="/TaskTracking" element={<TaskTracking />} />
+              </>
+            )}
+            {userRole === 'member' && (
+              <>
+                <Route path="/" element={<Navigate to="/memberview" />} />
+                <Route path="/memberview" element={<MemberView />} />
               </>
             )}
           </>

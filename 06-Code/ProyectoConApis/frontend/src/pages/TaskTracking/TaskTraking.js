@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "../common/AppNavbar";
 import TaskDetailsModal from "./TaskDetailsModal";
 import Footer from "../common/Footer";
 import "../css/stylesTaskTracking.css";
 import API_BASE_URL from "../../api";
+import AssignTask from './AssignTask';
+import AssignedTasks from './AssignedTasks';
+import AssignedByUserTasks from './AssignedByUserTask';
+
 
 const TaskTracking = () => {
   const [tasks, setTasks] = useState([]);
@@ -76,42 +79,9 @@ const TaskTracking = () => {
         <h1 className="text-center mb-4">Seguimiento de Tareas</h1>
 
         <div className="row">
-          <div className="col-md-6 mb-4">
-            <h2>Asignar Tarea</h2>
-            <form onSubmit={handleAssignTask} className="form-control">
-              <div className="mb-3">
-                <label htmlFor="taskTitle" className="form-label">Título</label>
-                <input type="text" id="taskTitle" name="taskTitle" className="form-control" required />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="taskDescription" className="form-label">Descripción</label>
-                <textarea id="taskDescription" name="taskDescription" rows="3" className="form-control" required></textarea>
-              </div>
-              <div className="mb-3">
-                <label htmlFor="assignedTo" className="form-label">Asignar a</label>
-                <input type="text" id="assignedTo" name="assignedTo" className="form-control" required />
-              </div>
-              <button type="submit" className="btn btn-primary w-100">Asignar Tarea</button>
-            </form>
-          </div>
-
-          <div className="col-md-6 mb-4">
-            <h2>Tareas Asignadas</h2>
-            <ul className="list-group">
-              {tasks.length > 0 ? (
-                tasks.map((task) => (
-                  <li key={task._id} className="list-group-item d-flex justify-content-between align-items-center">
-                    {task.title}
-                    <button className="btn btn-info" onClick={() => handleShowModal(task)}>
-                      Ver Detalles
-                    </button>
-                  </li>
-                ))
-              ) : (
-                <p className="text-muted">No tienes tareas asignadas.</p>
-              )}
-            </ul>
-          </div>
+          <AssignTask handleAssignTask={handleAssignTask} />
+          <AssignedTasks tasks={tasks} handleShowModal={handleShowModal} />
+          <AssignedByUserTasks />
         </div>
       </div>
 
