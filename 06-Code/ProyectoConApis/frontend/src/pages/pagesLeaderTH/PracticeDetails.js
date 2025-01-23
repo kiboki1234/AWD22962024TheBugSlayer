@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
 import API_BASE_URL from "../../api";
@@ -31,14 +31,13 @@ const PracticeDetails = ({ practice, show, handleClose }) => {
                 checkInTime: new Date(),
             });
             setAttendanceStatus({ userId, status: "success" });
-            setTimeout(() => setAttendanceStatus(null), 2000); // Mensaje desaparece después de 3 segundos
+            setTimeout(() => setAttendanceStatus(null), 3000); // Mensaje desaparece después de 3 segundos
         } catch (error) {
             setAttendanceStatus({ userId, status: "error" });
             console.error("Error al registrar la asistencia:", error);
-            setTimeout(() => setAttendanceStatus(null), 2000); // Mensaje desaparece después de 3 segundos
+            setTimeout(() => setAttendanceStatus(null), 3000); // Mensaje desaparece después de 3 segundos
         }
     };
-
 
     if (!practice) return null;
 
