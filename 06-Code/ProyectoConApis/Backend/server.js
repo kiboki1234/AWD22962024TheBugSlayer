@@ -14,7 +14,8 @@ const taskRoutes = require('./routes/taskRoutes');
 const practiceRoutes = require('./routes/practiceRoutes');
 const news= require('./routes/newsRoutes');
 const API_BASE_URL = require("./api");
-
+const contactRoutes = require('./routes/contactRoutes');
+const { protect } = require('./middlewares/authMiddleware');
 
 dotenv.config();
 connectDB();
@@ -35,7 +36,8 @@ app.use('/api/leaders', leaderRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/practices', practiceRoutes);
 app.use('/api/news', news);
-
+// Rutas de contacto
+app.use('/api/contact', contactRoutes);
 
 // Manejo de errores
 app.use(errorHandler);
