@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import PracticesList from "./PracticesList";
 import CreatePractice from "./CreatePractice";
 import CalendarComponent from "./CalendarComponent";
+import UserAttendanceChart from "./AttandanceChart";
 
 const AdminDashboard = () => {
 
@@ -17,6 +18,9 @@ const AdminDashboard = () => {
                 <div className="col">
                     <PracticesList />
                 </div>
+            </div>
+            <div className="row">          
+                     <UserAttendanceChart /> 
             </div>
         </div>
     );

@@ -21,7 +21,7 @@ const HomePage = () => {
                         <div className="carousel-caption d-none d-md-block">
                             <h1>Bienvenido al Club de Política Exterior y Diplomación</h1>
                             <p>Simulamos modelos de debate como la ONU y el Parlamento Británico. ¡Únete a nosotros para desarrollar tus habilidades de oratoria y diplomacia!</p>
-                            <a href="./aboutUs.php" className="btn btn-primary btn-lg">Saber más</a>
+                            <a href="/AboutUs" className="btn btn-primary btn-lg">Saber más</a>
                         </div>
                     </div>
                     <div className="carousel-item">
