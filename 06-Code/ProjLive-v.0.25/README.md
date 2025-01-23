@@ -1,2 +1,0 @@
-# PrototipoAplicacionMascotas
-PrototipoPWA
