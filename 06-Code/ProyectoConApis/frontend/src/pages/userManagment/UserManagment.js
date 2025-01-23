@@ -21,7 +21,7 @@ const UserManagement = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get(`${API_BASE_URL}/api/users/get-all-users`);
+            const response = await axios.get(`${API_BASE_URL}/api/users/all`);
             setUsers(response.data);
         } catch (error) {
             console.error("Error al obtener usuarios:", error);
@@ -36,7 +36,7 @@ const UserManagement = () => {
     const handleCreateUser = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${API_BASE_URL}/api/users/create-user`, newUser);
+            const response = await axios.post(`${API_BASE_URL}/api/users/create`, newUser);
             setUsers([...users, response.data.user]);
             setNewUser({
                 name: "",
