@@ -33,8 +33,8 @@ const NewsList = () => {
     };
 
     return (
-        <div className="container mt-4">
-            <h1 className="mb-4 text-center">Noticias de Política y Relaciones Exteriores</h1>
+        <div className="container mt-4 pt-4">
+            <h1 className="mb-4  pt-4 text-center">Noticias de Política y Relaciones Exteriores</h1>
             <form onSubmit={handleSearch} className="mb-4 d-flex">
                 <input
                     type="text"

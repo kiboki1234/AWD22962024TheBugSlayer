@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 //import "./Navbar.css"; // Archivo de estilos opcional para la barra de navegación
+import '../css/style.css';
 import logoIcon from "./assets/img/logonav.png"; // Importar la imagen del logo
 const LandingNavbar = () => {
     return (

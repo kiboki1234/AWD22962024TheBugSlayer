@@ -10,12 +10,12 @@ import Login from './pages/LandingPage/pages/Login';
 import DebateModels from './pages/LandingPage/pages/DebateModels';
 import Events from './pages/LandingPage/pages/Events';
 import LandingNavbar from './pages/LandingPage/Navbar';
+import NewsList from './components/NewsList';
 
 //app
 import Dashboard from './pages/pagesLeaderTH/AdminDashboard';
 import TaskTracking from './pages/TaskTracking/TaskTraking';
 import UserManagement from './pages/userManagment/UserManagment';
-import NewsList from './components/NewsList';
 import AppNavbar from './pages/common/AppNavbar';
 import UserMessages from './pages/pagesLeaderTH/ToContact';
 import MemberView from './pages/memberView/MemberView';
