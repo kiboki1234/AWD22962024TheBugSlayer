@@ -6,6 +6,7 @@ import "../css/stylesTaskTracking.css";
 import API_BASE_URL from "../../api";
 import AssignTask from './AssignTask';
 import AssignedTasks from './AssignedTasks';
+import AssignedByUserTasks from './AssignedByUserTask';
 
 
 const TaskTracking = () => {
@@ -80,6 +81,7 @@ const TaskTracking = () => {
         <div className="row">
           <AssignTask handleAssignTask={handleAssignTask} />
           <AssignedTasks tasks={tasks} handleShowModal={handleShowModal} />
+          <AssignedByUserTasks />
         </div>
       </div>
 

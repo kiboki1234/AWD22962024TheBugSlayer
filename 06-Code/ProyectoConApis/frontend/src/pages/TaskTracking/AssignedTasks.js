@@ -3,7 +3,7 @@ import React from 'react';
 const AssignedTasks = ({ tasks, handleShowModal }) => {
   return (
     <div className="col-md-6 mb-4">
-      <h2>Tareas Asignadas</h2>
+      <h2>Tareas Asignadas para Mi</h2>
       <ul className="list-group">
         {tasks.length > 0 ? (
           tasks.map((task) => (
