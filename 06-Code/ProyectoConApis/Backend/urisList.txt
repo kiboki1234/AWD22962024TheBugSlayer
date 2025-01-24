@@ -138,12 +138,32 @@ Response
 Vicepresidentes (/api/vicePresidents)
 
 POST https://backendproyectweb.onrender.com/api/vicePresidents/
-GET https://backendproyectweb.onrender.com/api/vicePresidents/
-GET https://backendproyectweb.onrender.com/api/vicePresidents/:id
-PUT https://backendproyectweb.onrender.com/api/vicePresidents/:id
-DELETE https://backendproyectweb.onrender.com/api/vicePresidents/:id
 
-Presidentes (/api/presidents)
+Content-Type: application/json
+
+{
+  "assignedLeaders": ["60d0fe4f5311236168a109ca", "60d0fe4f5311236168a109cb"]
+}
+
+GET https://backendproyectweb.onrender.com/api/vicePresidents/
+
+GET https://backendproyectweb.onrender.com/api/vicePresidents/:id
+https://backendproyectweb.onrender.com/api/vicePresidents/60d0fe4f5311236168a109c9
+response
+{
+  "message": "Vicepresidente no encontrado"
+}
+PUT https://backendproyectweb.onrender.com/api/vicePresidents/:id
+https://backendproyectweb.onrender.com/api/vicePresidents/60d0fe4f5311236168a109c9
+{
+  "message": "Vicepresidente no encontrado"
+}
+DELETE https://backendproyectweb.onrender.com/api/vicePresidents/:id
+https://backendproyectweb.onrender.com/api/vicePresidents/60d0fe4f5311236168a109c9
+
+ES LO MISMO QUE VICEPRESIDENTE
+
+Presidentes (/api/presidents) 
 POST https://backendproyectweb.onrender.com/api/presidents/
 GET https://backendproyectweb.onrender.com/api/presidents/
 GET https://backendproyectweb.onrender.com/api/presidents/:id
@@ -167,6 +187,8 @@ GET https://backendproyectweb.onrender.com/api/leaders/
 GET https://backendproyectweb.onrender.com/api/leaders/:id
 PUT https://backendproyectweb.onrender.com/api/leaders/:id
 DELETE https://backendproyectweb.onrender.com/api/leaders/:id
+
+
 Tareas (/api/tasks)
 POST https://backendproyectweb.onrender.com/api/tasks/create
 GET https://backendproyectweb.onrender.com/api/tasks/all
