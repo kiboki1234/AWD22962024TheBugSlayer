@@ -1,21 +1,148 @@
 Autenticación (/api/auth)
-POST https://backendproyectweb.onrender.com/api/auth/create
-GET https://backendproyectweb.onrender.com/api/auth/all
-GET https://backendproyectweb.onrender.com/api/auth/:id
-PUT https://backendproyectweb.onrender.com/api/auth/:id
-DELETE https://backendproyectweb.onrender.com/api/auth/:id
+POST https://backendproyectweb.onrender.com/api/auth/login
+Body:
+{
+  "email": "john@example.com",
+  "password": "123456"
+}
+Response
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OGZiNWY4NjQ4N2ZmOTIyODE3NGM0MCIsInJvbGUiOiJsZWFkZXIiLCJpYXQiOjE3Mzc3Mzg3NjYsImV4cCI6MTczODM0MzU2Nn0.V6wsD2MVR8dOTg8dY-Ct911e-i4YowZgB5qi63YH2OQ",
+  "user": {
+    "id": "678fb5f86487ff9228174c40",
+    "name": "John Doe",
+    "role": "leader"
+  }
+}
+
+POST https://backendproyectweb.onrender.com/api/auth/register
+body:
+{
+  "name": "Pedro",
+  "email": "pedro@example.com",
+  "password": "123456",
+  "role": "leader",
+  "student_id": "S22222",
+  "phone": "098763333"
+}
+response
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTNjYWE4MWNmNzZlZWU4N2ZlNTg0MiIsInJvbGUiOiJsZWFkZXIiLCJpYXQiOjE3Mzc3Mzg5MjEsImV4cCI6MTczODM0MzcyMX0.tyzj2AddfUSSIZUJ-uX6NcTfTBw4kxHaM3pw_A-9Iq0",
+  "user": {
+    "id": "6793caa81cf76eee87fe5842",
+    "name": "Pedro",
+    "role": "leader"
+  }
+}
 Usuarios (/api/users)
 POST https://backendproyectweb.onrender.com/api/users/create
+Header:
+Authorization 	Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OGZiNWY4NjQ4N2ZmOTIyODE3NGM0MCIsInJvbGUiOiJsZWFkZXIiLCJpYXQiOjE3Mzc3Mzg3NjYsImV4cCI6MTczODM0MzU2Nn0.V6wsD2MVR8dOTg8dY-Ct911e-i4YowZgB5qi63YH2OQ
+
+Body:
+{
+  "name":"Mateo",
+  "email":"mateo@example.com",
+  "password":"12345",
+  "role":"member",
+  "student_id":"S111111",
+  "phone":"0987434322"
+}
+Response
+{
+  "message": "Usuario creado exitosamente",
+  "user": {
+    "name": "Mateo",
+    "email": "mateo@example.com",
+    "password": "$2a$10$HOks6/UyJFdYB7h/sIXFpuEXEGV1l44qYAhNrzILHI7VWZVGwXBaG",
+    "role": "member",
+    "student_id": "S111111",
+    "phone": "0987434322",
+    "_id": "6793cc7f1cf76eee87fe5845",
+    "createdAt": "2025-01-24T17:23:11.347Z",
+    "updatedAt": "2025-01-24T17:23:11.347Z",
+    "__v": 0
+  }
+}
+
 GET https://backendproyectweb.onrender.com/api/users/all
+response
+[
+  {
+    "_id": "678fb5f86487ff9228174c40",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "$2a$10$dbDMtAyKFcz8/hBqRGRTG.zVZvSeBHBNhbL9gGkSN8Xo3BUnVsso.",
+    "role": "leader",
+    "student_id": "S12345",
+    "phone": "0987654321",
+    "createdAt": "2025-01-21T14:58:00.086Z",
+    "updatedAt": "2025-01-21T14:58:00.086Z",
+    "__v": 0
+  }
+]
+
+
 GET https://backendproyectweb.onrender.com/api/users/:id
+https://backendproyectweb.onrender.com/api/users/678fb5f86487ff9228174c40
+response
+{
+  "_id": "678fb5f86487ff9228174c40",
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "$2a$10$dbDMtAyKFcz8/hBqRGRTG.zVZvSeBHBNhbL9gGkSN8Xo3BUnVsso.",
+  "role": "leader",
+  "student_id": "S12345",
+  "phone": "0987654321",
+  "createdAt": "2025-01-21T14:58:00.086Z",
+  "updatedAt": "2025-01-21T14:58:00.086Z",
+  "__v": 0
+}
+
 PUT https://backendproyectweb.onrender.com/api/users/:id
+https://backendproyectweb.onrender.com/api/users/678fb5f86487ff9228174c40
+body:
+{
+  "name":"John Doe Espin",
+  "email":"john@example.com",
+  "password":"123456",
+  "role":"leader",
+  "student_id":"S123456",
+  "phone":"0987654321"
+}
+Response:
+{
+  "message": "Usuario actualizado exitosamente",
+  "user": {
+    "_id": "678fb5f86487ff9228174c40",
+    "name": "John Doe Espin",
+    "email": "john@example.com",
+    "password": "123456",
+    "role": "leader",
+    "student_id": "S123456",
+    "phone": "0987654321",
+    "createdAt": "2025-01-21T14:58:00.086Z",
+    "updatedAt": "2025-01-24T17:28:53.765Z",
+    "__v": 0
+  }
+}
+
+
 DELETE https://backendproyectweb.onrender.com/api/users/:id
+https://backendproyectweb.onrender.com/api/users/67910ee1c9617892fa1b20f2
+Response
+{
+  "message": "Usuario eliminado exitosamente"
+}
+
 Vicepresidentes (/api/vicePresidents)
+
 POST https://backendproyectweb.onrender.com/api/vicePresidents/
 GET https://backendproyectweb.onrender.com/api/vicePresidents/
 GET https://backendproyectweb.onrender.com/api/vicePresidents/:id
 PUT https://backendproyectweb.onrender.com/api/vicePresidents/:id
 DELETE https://backendproyectweb.onrender.com/api/vicePresidents/:id
+
 Presidentes (/api/presidents)
 POST https://backendproyectweb.onrender.com/api/presidents/
 GET https://backendproyectweb.onrender.com/api/presidents/
